@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,22 +58,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       final data = studentController.box.value.values.toList();
                       return ListView.builder(
                         itemBuilder: (context, index) {
-                          return Card(
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    'https://i.pinimg.com/564x/e7/c3/f4/e7c3f4a076b8472e0b1bd9c00a847f7f.jpg'),
+                          return Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                        spreadRadius: 0,
+                                        blurRadius: 0,
+                                        color: Colors.grey,
+                                        offset: Offset(4, 10),
+                                        blurStyle: BlurStyle.normal)
+                                  ]),
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://i.pinimg.com/564x/e7/c3/f4/e7c3f4a076b8472e0b1bd9c00a847f7f.jpg'),
+                                ),
+                                title: Text(data[index].name),
+                                trailing: Text(data[index].rollNumber),
+                                onTap: () async {
+                                  return Get.to(ProfileScreen(
+                                    name: data[index].name,
+                                    age: data[index].age,
+                                    rollNumber: data[index].rollNumber,
+                                    index: index,
+                                  ));
+                                },
                               ),
-                              title: Text(data[index].name),
-                              trailing: Text(data[index].rollNumber),
-                              onTap: () async {
-                                return Get.to(ProfileScreen(
-                                  name: data[index].name,
-                                  age: data[index].age,
-                                  rollNumber: data[index].rollNumber,
-                                  index: index,
-                                ));
-                              },
                             ),
                           );
                         },

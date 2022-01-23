@@ -32,8 +32,9 @@ class ProfileScreen extends StatelessWidget {
                 if (index != null) {
                   int keys = await Boxes.getData().keyAt(index!);
                   await Get.find<StudentController>().deletDetails(keys);
+                  Get.find<StudentController>().update(["hello"]);
                   Get.snackbar(name, "Delect from database");
-                  Get.back();
+                  Navigator.of(context).pop();
                 } else {
                   print('no intex');
                 }

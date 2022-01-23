@@ -8,25 +8,24 @@ class StudentController extends GetxController {
 
   getData() {
     box.value.values.toList();
-    // update(['home']);
+
     print(box.value.values.toList());
   }
 
   Future<void> addDetails(AllDetails value) async {
     await box.value.add(value);
-
-    // update(['home']);
+    // update();
   }
 
   Future<void> deletDetails(int key) async {
     await box.value.delete(key);
-    update(["hello"]);
-    // update(['home']);
+    // update();
 
     print("hive ${box.value.values.toList()}");
   }
 
-  // Future updateDetails(AllDetails data, intex) async {
-  //   box.putAt(intex, data);
-  // }
+  Future updateDetails(AllDetails data, intex) async {
+    box.value.putAt(intex, data);
+    // update();
+  }
 }

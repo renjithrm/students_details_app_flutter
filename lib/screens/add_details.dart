@@ -136,10 +136,10 @@ class _AddDetailsState extends State<AddDetails> {
           if (formkey.currentState!.validate()) {
             AllDetails details =
                 AllDetails(name: name, age: age, rollNumber: rollNumber);
-            // addDetails(details);
+
             Get.find<StudentController>().addDetails(details);
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => HomeScreen()));
+            Get.find<StudentController>().update(["hello"]);
+            Navigator.of(context).pop();
           } else {
             return;
           }

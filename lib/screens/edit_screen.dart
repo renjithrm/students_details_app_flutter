@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:student_details_app/controller/student_data_contoller.dart';
 import 'package:student_details_app/data%20base/all_details.dart';
 import 'package:student_details_app/data%20base/db_functions.dart';
 import 'package:student_details_app/screens/profile_screen.dart';
@@ -30,7 +32,6 @@ class _EditDetailsState extends State<EditDetails> {
   TextEditingController rollNumberControler = TextEditingController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     if (nameControler != null) {
@@ -167,8 +168,10 @@ class _EditDetailsState extends State<EditDetails> {
                 name: widget.name,
                 age: widget.age,
                 rollNumber: widget.rollNumber);
-            await updateDetails(details, widget.intex);
-            // Navigator.of(context).pop();
+            await Get.find<StudentController>()
+                .updateDetails(details, widget.intex);
+            Get.find<StudentController>().update(["hello"]);
+            Get.snackbar(widget.name, "updates");
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => ProfileScreen(
                     name: widget.name,
