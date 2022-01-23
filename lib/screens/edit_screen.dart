@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_details_app/data%20base/all_details.dart';
 import 'package:student_details_app/data%20base/db_functions.dart';
-import 'package:student_details_app/screens/home_screen.dart';
 import 'package:student_details_app/screens/profile_screen.dart';
 
 class EditDetails extends StatefulWidget {

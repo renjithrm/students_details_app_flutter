@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:student_details_app/data%20base/all_details.dart';
+import 'package:get/get.dart';
+import 'package:student_details_app/controller/student_data_contoller.dart';
 import 'package:student_details_app/data%20base/db_functions.dart';
 import 'package:student_details_app/screens/edit_screen.dart';
-import 'package:student_details_app/screens/home_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   String name;
   String age;
   String rollNumber;
-  int? intex;
+  int? index;
   ProfileScreen(
       {Key? key,
       required this.name,
       required this.age,
       required this.rollNumber,
-      this.intex})
+      this.index})
       : super(key: key);
   Widget div = const SizedBox(
     height: 30,
@@ -28,10 +28,12 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () {
-                if (intex != null) {
-                  deletDetails(intex!);
-                  Navigator.of(context).pop();
+              onPressed: () async {
+                if (index != null) {
+                  int keys = await Boxes.getData().keyAt(index!);
+                  await Get.find<StudentController>().deletDetails(keys);
+                  Get.snackbar(name, "Delect from database");
+                  Get.back();
                 } else {
                   print('no intex');
                 }
@@ -44,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
                             name: name,
                             age: age,
                             rollNumber: rollNumber,
-                            intex: intex,
+                            intex: index,
                           ))),
               icon: const Icon(Icons.edit))
         ],

@@ -88,7 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           name: result[intex].name,
                                           age: result[intex].age,
                                           rollNumber: result[intex].rollNumber,
-                                          intex: id,
+                                          index: id,
                                         ),
                                       )));
                             },

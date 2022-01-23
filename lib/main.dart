@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:student_details_app/data%20base/all_details.dart';
 import 'package:student_details_app/screens/home_screen.dart';
@@ -8,7 +9,7 @@ Future<void> main(List<String> args) async {
   await Hive.initFlutter();
   Hive.registerAdapter<AllDetails>(AllDetailsAdapter());
   await Hive.openBox<AllDetails>('details');
-  runApp(const MaterialApp(
+  runApp(const GetMaterialApp(
     home: MyApp(),
     debugShowCheckedModeBanner: false,
   ));

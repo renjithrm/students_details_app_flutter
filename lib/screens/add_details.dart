@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:student_details_app/controller/student_data_contoller.dart';
 import 'package:student_details_app/data%20base/all_details.dart';
-import 'package:student_details_app/data%20base/db_functions.dart';
 import 'package:student_details_app/screens/home_screen.dart';
 
 class AddDetails extends StatefulWidget {
@@ -22,6 +23,8 @@ class _AddDetailsState extends State<AddDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.lightBlue,
         title: const Text('Add Details'),
         centerTitle: true,
       ),
@@ -133,7 +136,8 @@ class _AddDetailsState extends State<AddDetails> {
           if (formkey.currentState!.validate()) {
             AllDetails details =
                 AllDetails(name: name, age: age, rollNumber: rollNumber);
-            addDetails(details);
+            // addDetails(details);
+            Get.find<StudentController>().addDetails(details);
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => HomeScreen()));
           } else {
