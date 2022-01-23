@@ -34,7 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => SearchScreen())),
-              icon: const Icon(Icons.search))
+              icon: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ))
         ],
       ),
       body: Container(
@@ -62,12 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
                               decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
                                         spreadRadius: 0,
                                         blurRadius: 0,
-                                        color: Colors.grey,
+                                        color:
+                                            Color.fromARGB(255, 201, 199, 199),
                                         offset: Offset(4, 10),
                                         blurStyle: BlurStyle.normal)
                                   ]),
