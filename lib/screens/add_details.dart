@@ -12,13 +12,12 @@ class AddDetails extends StatefulWidget {
 }
 
 class _AddDetailsState extends State<AddDetails> {
-  late String name;
-  late String age;
-  late String rollNumber;
   final formkey = GlobalKey<FormState>();
   Widget div = const SizedBox(height: 30);
   Widget rowDiv = const SizedBox(width: 30);
-
+  final name = TextEditingController();
+  final age = TextEditingController();
+  final rollNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,11 +73,12 @@ class _AddDetailsState extends State<AddDetails> {
             borderRadius: BorderRadius.circular(20),
           ),
           hintText: 'Enter your name'),
-      onChanged: (value) {
-        setState(() {
-          name = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     name = value;
+      //   });
+      // },
+      controller: name,
       validator: (nam) {
         if (nam!.isEmpty) {
           return 'enter name';
@@ -96,11 +96,12 @@ class _AddDetailsState extends State<AddDetails> {
         hintText: 'Enter your age',
       ),
       keyboardType: TextInputType.number,
-      onChanged: (value) {
-        setState(() {
-          age = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     age = value;
+      //   });
+      // },
+      controller: age,
       validator: (value) {
         if (value!.isEmpty) {
           return 'enter age';
@@ -117,11 +118,12 @@ class _AddDetailsState extends State<AddDetails> {
           ),
           hintText: 'Enter your Roll Number'),
       keyboardType: TextInputType.number,
-      onChanged: (value) {
-        setState(() {
-          rollNumber = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     rollNumber = value;
+      //   });
+      // },
+      controller: rollNumber,
       validator: (value) {
         if (value!.isEmpty) {
           return 'enter roll number';
@@ -134,8 +136,8 @@ class _AddDetailsState extends State<AddDetails> {
     return ElevatedButton(
         onPressed: () {
           if (formkey.currentState!.validate()) {
-            AllDetails details =
-                AllDetails(name: name, age: age, rollNumber: rollNumber);
+            AllDetails details = AllDetails(
+                name: name.text, age: age.text, rollNumber: rollNumber.text);
 
             Get.find<StudentController>().addDetails(details);
             Get.find<StudentController>().update(["hello"]);

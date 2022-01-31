@@ -98,39 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: data.length,
                       );
                     }),
-                // ValueListenableBuilder(
-                //   valueListenable: box.listenable(),
-                //   builder: (BuildContext ctx, Box<AllDetails> newBox, _) {
-                //     return ListView.builder(
-                //       shrinkWrap: true,
-                //       itemBuilder: (context, intex) {
-                //         var alldata = box.values.toList();
-                //         final data = alldata[intex];
-                //         return ListTile(
-                //           leading: Container(
-                //             decoration: BoxDecoration(
-                //                 borderRadius: BorderRadius.circular(30),
-                //                 image: const DecorationImage(
-                //                     image: NetworkImage(
-                //                         'https://i.pinimg.com/564x/e7/c3/f4/e7c3f4a076b8472e0b1bd9c00a847f7f.jpg'))),
-                //             width: 50,
-                //             height: 50,
-                //           ),
-                //           title: Text(alldata[intex].name),
-                //           trailing: Text(alldata[intex].id.toString()),
-                //           onTap: () => Navigator.of(context).push(
-                //               MaterialPageRoute(
-                //                   builder: (context) => ProfileScreen(
-                //                       name: data.name,
-                //                       age: data.age,
-                //                       rollNumber: data.rollNumber,
-                //                       intex: intex))),
-                //         );
-                //       },
-                //       itemCount: newBox.length,
-                //     );
-                //   },
-                // ),
               ),
       ),
       floatingActionButton: FloatingActionButton(

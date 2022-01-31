@@ -102,11 +102,11 @@ class _EditDetailsState extends State<EditDetails> {
             borderRadius: BorderRadius.circular(20),
           ),
           hintText: 'Enter your name'),
-      onChanged: (value) {
-        setState(() {
-          widget.name = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     widget.name = value;
+      //   });
+      // },
       validator: (nam) {
         if (nam!.isEmpty) {
           return 'enter name';
@@ -125,11 +125,11 @@ class _EditDetailsState extends State<EditDetails> {
         hintText: 'Enter your age',
       ),
       keyboardType: TextInputType.number,
-      onChanged: (value) {
-        setState(() {
-          widget.age = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     widget.age = value;
+      //   });
+      // },
       validator: (value) {
         if (value!.isEmpty) {
           return 'enter age';
@@ -147,11 +147,11 @@ class _EditDetailsState extends State<EditDetails> {
           ),
           hintText: 'Enter your Roll Number'),
       keyboardType: TextInputType.number,
-      onChanged: (value) {
-        setState(() {
-          widget.rollNumber = value;
-        });
-      },
+      // onChanged: (value) {
+      //   setState(() {
+      //     widget.rollNumber = value;
+      //   });
+      // },
       validator: (value) {
         if (value!.isEmpty) {
           return 'enter roll number';
@@ -165,18 +165,18 @@ class _EditDetailsState extends State<EditDetails> {
         onPressed: () async {
           if (formkey.currentState!.validate()) {
             AllDetails details = AllDetails(
-                name: widget.name,
-                age: widget.age,
-                rollNumber: widget.rollNumber);
+                name: nameControler.text,
+                age: ageControler.text,
+                rollNumber: rollNumberControler.text);
             await Get.find<StudentController>()
                 .updateDetails(details, widget.intex);
             Get.find<StudentController>().update(["hello"]);
             Get.snackbar(widget.name, "updates");
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => ProfileScreen(
-                    name: widget.name,
-                    age: widget.age,
-                    rollNumber: widget.rollNumber)));
+                    name: nameControler.text,
+                    age: ageControler.text,
+                    rollNumber: rollNumberControler.text)));
           } else {
             return;
           }

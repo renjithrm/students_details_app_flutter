@@ -5,7 +5,7 @@ import 'package:student_details_app/data%20base/db_functions.dart';
 class StudentController extends GetxController {
   // var hiveBox = <AllDetails>[].obs;
   final box = Boxes.getData().obs;
-
+  var searchText = "".obs;
   getData() {
     box.value.values.toList();
 
